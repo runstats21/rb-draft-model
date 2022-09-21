@@ -1,0 +1,14 @@
+name: RBDraftModelPDPplots
+title: RBDraftModelPDPplots
+username:
+account: twstats
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 6052568
+bundleId: 5813738
+url: https://twstats.shinyapps.io/RBDraftModelPDPplots/
+when: 1650376228.72311
+lastSyncTime: 1650376228.72311
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: app.R|full_df.csv|wp_model_df.csv
