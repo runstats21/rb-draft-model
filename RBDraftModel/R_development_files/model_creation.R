@@ -1,5 +1,5 @@
 # libraries
-library(tidyverse) # allows for use of pipes, rvest for scraping, and purrr for mapping vector of urls to scraping function
+library(tidyverse) # for pipes, rvest for scraping, purrr for mapping vector of urls to scraping function
 library(gbm) # for "Gradient Boosting Machine" models
 
 ### Data import ###
