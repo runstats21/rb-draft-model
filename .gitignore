@@ -3,6 +3,7 @@
 *.Rproj.user/*
 RBDraftModel/.Rproj.user/*
 .Rhistory
+RBDraftModel/.Rhistory
 .RData
 .Ruserdata
 RBDraftModel/rsconnect/*
