@@ -5,3 +5,4 @@ RBDraftModel/.Rproj.user/.*
 .RData
 .Ruserdata
 RBDraftModel/rsconnect/*
+*.Rproj
