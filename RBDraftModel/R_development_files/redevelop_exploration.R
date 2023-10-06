@@ -89,7 +89,6 @@ import_position_data <- function(url) {
     mutate(Player = str_replace_all(Player, "[*+]", "")) # remove stars and other symbols from data values
   
   return(pos_tbl_out)
-  on.exit(close_connection(url))
 }
 
 # function to get wins from season standings table
@@ -148,8 +147,8 @@ import_nfl_position_data <- function(url) {
 showConnections()
 
 # years to get
-years <- c(1990:2022)
-nfl_years <- c(1991:2022)
+years <- c(2005:2022)
+nfl_years <- c(2006:2022)
 
 # urls of all rb stats (up to 400 per year)
 rush_urls <- str_c("https://www.sports-reference.com/cfb/years/", years, "-rushing.html")  
@@ -164,21 +163,24 @@ nfl_rush_urls <- str_c("https://www.pro-football-reference.com/years/", nfl_year
 # test urls
 rush_urls[1]
 nfl_rush_urls[length(nfl_rush_urls)]
-import_position_data(rush_urls[3])
+import_position_data(rush_urls[3]) # TOFIX: this throws error, look into this
 import_nfl_position_data(nfl_rush_urls[length(nfl_rush_urls)])
 get_wins_data(standing_urls[1])
 
 close_connection(rush_urls[3])
 
 # examine AP Polls vars
-get_wins_data(standing_urls[1])$`Polls.AP Post` %>% summary() # 1-25 or NaN
+get_wins_data(standing_urls[1])$`Polls.AP Rank` %>% summary() # 1-25 or NaN
 # so, could easily create a flag of whether or not this field is NaN
 
 
 ## DFS ##
 # create rushing and wins dfs for all specified years (i.e., all urls stored in above vectors)
+# TOFIX: sports reference does not allow more than 20 requests per minute ::: add sys.sleep(60) between function calls
 rush_df <- map_dfr(rush_urls, import_position_data)
+Sys.sleep(60)
 wins_df <- map_dfr(standing_urls, get_wins_data)
+Sys.sleep(60)
 nfl_df <- map_dfr(nfl_rush_urls, import_nfl_position_data)
 
 ### Clean data ###
@@ -207,7 +209,7 @@ full_df <- rush_clean %>%
 full_df[is.na(full_df)] <- 0
 
 # holdout 2022 rbs
-test_df = 
+# test_df = 
 
 # write full df to a csv file (for use in Shiny App)
 write_csv(full_df, file = "./full_df_redev.csv")
@@ -234,8 +236,6 @@ nfl_full_df <- full_df %>%
   inner_join(rb_join_df, by = "Player") %>% # this will only get RBs who have made it to the nfl
   select(-Year.y) %>% 
   unique()
-
-
 
 
 
