@@ -6,7 +6,7 @@ NFL running back data from [sportsreference.com](https://www.sports-reference.co
 
 <br>
 
-This project culminated in the creation of two Gradient Boosting Machine (GBM) models, one to predict college win percentage, and another to predict NFL average rushing yards per carry,
+This project culminated in the creation of two Stochastic Gradient Boosting Machine (GBM) models, one to predict college win percentage, and another to predict NFL average rushing yards per carry,
 all based on college rushing data. The models were fit using the `gbm` library within R, with predictions translated into Z-scores to allow for aggregation of win-percentage and yard-per-carry metrics.
 
 <br>
