@@ -1,11 +1,11 @@
 # server.R
 
-# libraries
+# libraries (make sure these libraries are installed before running)
 library(tidyverse)
 library(gbm)
 library(shiny)
 
-# set.seed()
+# set seed (for reproducability)
 set.seed(1)
 
 # shiny selections
@@ -76,7 +76,9 @@ server <- function(input, output) {
   draft_data <- eventReactive(input$draftyear, {
     
     year_df <- full_df %>% 
-      filter(Year == input$draftyear) %>% 
+      # input = year of draft (e.g. 2022 in 2021-2022 season)
+      # dataset `Year` = year of college season (e.g. 2021 in 2021-2022 season)
+      filter(Year == (input$draftyear-1)) %>% 
       select(-c(Overall.Pct,PPG.Off))
     
     # predict wp for 2021
@@ -100,9 +102,7 @@ server <- function(input, output) {
     # predict nfl avg for 2021
     nfl.preds <- predict(gbm_mod_nfl, year_df[, -nonmodel_cols], type = "response")
 
-    # make preds to a z-score
-
-    # can then cbind the predictions back to the df
+    #  cbind the predictions back to the df
     full_nfl_preds <- cbind(year_df, nfl.preds)
 
     # View predictions in order

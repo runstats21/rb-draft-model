@@ -1,6 +1,6 @@
 # ui.R
 
-# libraries
+# libraries (make sure these libraries are installed before running)
 library(shiny)
 library(tidyverse)
 library(gbm)
@@ -30,7 +30,7 @@ ui <- fluidPage(
                
                numericInput(inputId = "draftyear",
                             label = "Choose Year:",
-                            value = 2021, min = 1990, max = 2021),
+                            value = 2022, min = 1991, max = 2022),
                
                numericInput(inputId = "numplayers",
                             label = "Choose Number of Players to View:",
