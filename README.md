@@ -11,8 +11,4 @@ all based on college rushing data. The models were fit using the `gbm` library w
 
 <br>
 
-I then created a Shiny App to display model results, and allow for a "mock draft", with the aggregated model results ranking college running backs againsts eachother for a given season. 
-
-The code to create this Shiny App using the aggregated GBM models can be found in this repository.
-
-
+I then created a Shiny App to display model results, and allow for a "mock draft", with the aggregated model results ranking college running backs againsts eachother for a given season. The code to create this Shiny App using the aggregated GBM models can be found in this repository.
