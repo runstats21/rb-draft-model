@@ -21,4 +21,5 @@ data_tbl_clean = data_tbl[-c(1:2),] %>% mutate(Year = as.numeric(Year)) %>%
   # forward fill in year values
   fill(Year)
 
+write_csv(data_tbl_clean, "./R_development_files/rbsDraftedThru2023.csv")
 
