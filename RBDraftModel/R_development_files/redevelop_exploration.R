@@ -1,7 +1,5 @@
 # Redevelopment work
-# last modified: 7/24/2023
 # written by Tyler Ward
-
 
 
 # Redevelopment goals:
